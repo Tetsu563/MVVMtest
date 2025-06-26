@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using MVVM_DDD_DI.Common;
 
 namespace MVVM_DDD_DI.Presentation.ViewModel
 {
@@ -23,12 +24,12 @@ namespace MVVM_DDD_DI.Presentation.ViewModel
 
 		public MainWindowViewModel()
 		{
-			_startViewModel = new StartViewModel(this);
+			_startViewModel = new StartViewModel();
 			_dataListViewModel = new DataListViewModel();
 
 			CurrentView = _startViewModel;
 
-			ShowDataListCommand = new RelayCommand(() =>
+			ShowDataListCommand = new RelayCommand<object>(param =>
 			{
 				CurrentView = _dataListViewModel;
 			});
